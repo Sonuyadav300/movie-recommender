@@ -435,7 +435,7 @@ def parse_tmdb_search_to_cards(data, keyword: str, limit: int = 24):
 # =============================
 with st.sidebar:
     # Logo/Title
-    st.markdown("## 🎬 MoodFlix")
+    st.markdown("## 🎬 Menu")
     st.markdown("---")
     
     # Main Navigation
