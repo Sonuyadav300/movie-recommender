@@ -5,7 +5,7 @@ import random
 # =============================
 # CONFIG
 # =============================
-API_BASE = "http://localhost:8000"
+API_BASE = "https://movie-rec-main-1.onrender.com"
 TMDB_IMG = "https://image.tmdb.org/t/p/w500"
 
 st.set_page_config(page_title="MoodFlix - Movie Recommender", page_icon="🎬", layout="wide")
