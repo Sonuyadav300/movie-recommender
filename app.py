@@ -238,7 +238,7 @@ def poster_grid(cards, cols=5, key_prefix="grid"):
 
             with colset[c]:
                 if poster:
-                    st.image(poster, use_container_width=True)
+                    st.image(poster, width='stretch')
                 else:
                     st.markdown(
                         """
@@ -251,7 +251,7 @@ def poster_grid(cards, cols=5, key_prefix="grid"):
                         unsafe_allow_html=True
                     )
 
-                if st.button("▶ View", key=f"{key_prefix}_{r}_{c}_{idx}_{tmdb_id}", use_container_width=True):
+                if st.button("▶ View", key=f"{key_prefix}_{r}_{c}_{idx}_{tmdb_id}", width='stretch'):
                     if tmdb_id:
                         goto_details(tmdb_id)
 
@@ -282,7 +282,7 @@ def render_mood_grid(key_suffix=""):
                     if st.button(
                         btn_label,
                         key=f"mood_{mood['name']}{key_suffix}{i}_{j}",
-                        use_container_width=True,
+                        width='stretch',
                         help=mood['description']
                     ):
                         goto_mood_results(mood['name'])
@@ -363,10 +363,10 @@ with st.sidebar:
     st.markdown("## 🎬 Menu")
     st.markdown("---")
 
-    if st.button("🏠 Home", use_container_width=True):
+    if st.button("🏠 Home", width='stretch'):
         goto_home()
 
-    if st.button("🎭 Mood Picks", use_container_width=True):
+    if st.button("🎭 Mood Picks", width='stretch'):
         goto_moods_page()
 
     st.markdown("---")
@@ -424,7 +424,7 @@ if st.session_state.current_page == "home":
         st.session_state.search_query = typed
 
     with col2:
-        search_btn = st.button("🔍", use_container_width=True)
+        search_btn = st.button("🔍", width='stretch')
 
     if typed.strip():
         if len(typed.strip()) < 2:
@@ -481,7 +481,7 @@ elif st.session_state.current_page == "moods":
 
     col1, col2 = st.columns([1, 5])
     with col1:
-        if st.button("← Home", use_container_width=True):
+        if st.button("← Home", width='stretch'):
             goto_home()
 
     st.markdown(
@@ -520,10 +520,10 @@ elif st.session_state.current_page == "mood_results":
 
     col1, col2, col3 = st.columns([1, 3, 1])
     with col1:
-        if st.button("← Home", key="mood_back_home", use_container_width=True):
+        if st.button("← Home", key="mood_back_home", width='stretch'):
             goto_home()
     with col3:
-        if st.button("🎭 Change Mood", key="mood_change", use_container_width=True):
+        if st.button("🎭 Change Mood", key="mood_change", width='stretch'):
             goto_moods_page()
 
     st.markdown(
@@ -572,7 +572,7 @@ elif st.session_state.current_page == "details":
 
     col1, col2 = st.columns([1, 5])
     with col1:
-        if st.button("← Back", use_container_width=True):
+        if st.button("← Back", width='stretch'):
             goto_home()
 
     with st.spinner("Loading movie details..."):
@@ -594,7 +594,7 @@ elif st.session_state.current_page == "details":
     with left:
         # Poster
         if data.get("poster_url"):
-            st.image(data["poster_url"], use_container_width=True)
+            st.image(data["poster_url"], width='stretch')
         else:
             st.markdown(
                 """
@@ -621,7 +621,7 @@ elif st.session_state.current_page == "details":
                     st.link_button(
                         f"▶️ {trailer_name}",
                         youtube_url,
-                        use_container_width=True
+                        width='stretch'
                     )
         else:
             # Fallback YouTube search
@@ -629,7 +629,7 @@ elif st.session_state.current_page == "details":
             st.link_button(
                 "▶️ Search Trailer on YouTube",
                 f"https://www.youtube.com/results?search_query={movie_title_encoded}+trailer",
-                use_container_width=True
+                width='stretch'
             )
 
         st.markdown("---")
@@ -646,15 +646,13 @@ elif st.session_state.current_page == "details":
                 st.link_button(
                     "🔗 JustWatch",
                     watch_providers["link"],
-                    use_container_width=True
+                    width='stretch'
                 )
-
-           
         else:
             st.link_button(
                 "🔍 Search Online",
                 f"https://www.google.com/search?q={movie_title_encoded}+watch+online",
-                use_container_width=True
+                width='stretch'
             )
 
     with right:
@@ -702,7 +700,7 @@ elif st.session_state.current_page == "details":
         st.markdown("---")
 
         # =============================
-        # AI REVIEW SUMMARY - 
+        # AI REVIEW SUMMARY
         # =============================
         st.markdown("### 🤖 AI Review Summary")
 
@@ -768,7 +766,6 @@ elif st.session_state.current_page == "details":
                             st.markdown(f"• {point}")
 
         else:
-            # Show a message when no reviews exist
             st.markdown(
                 """
                 <div style="background-color: #f0f2f6; padding: 20px; 
@@ -788,7 +785,7 @@ elif st.session_state.current_page == "details":
     if data.get("backdrop_url"):
         st.markdown("---")
         st.markdown("### 🖼️ Backdrop")
-        st.image(data["backdrop_url"], use_container_width=True)
+        st.image(data["backdrop_url"], width='stretch')
 
     st.divider()
 
